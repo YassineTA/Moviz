@@ -12,6 +12,8 @@
 		C299AE86208AB09F00BE0494 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C299AE84208AB09F00BE0494 /* Main.storyboard */; };
 		C299AE88208AB09F00BE0494 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C299AE87208AB09F00BE0494 /* Assets.xcassets */; };
 		C299AE8B208AB09F00BE0494 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C299AE89208AB09F00BE0494 /* LaunchScreen.storyboard */; };
+		C299AE93208AB21F00BE0494 /* MovizTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C299AE92208AB21F00BE0494 /* MovizTableViewController.swift */; };
+		C299AE95208D3B1700BE0494 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C299AE94208D3B1700BE0494 /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		C299AE87208AB09F00BE0494 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C299AE8A208AB09F00BE0494 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C299AE8C208AB09F00BE0494 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C299AE92208AB21F00BE0494 /* MovizTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovizTableViewController.swift; sourceTree = "<group>"; };
+		C299AE94208D3B1700BE0494 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +60,12 @@
 			children = (
 				C299AE80208AB09F00BE0494 /* AppDelegate.swift */,
 				C299AE82208AB09F00BE0494 /* ViewController.swift */,
+				C299AE92208AB21F00BE0494 /* MovizTableViewController.swift */,
 				C299AE84208AB09F00BE0494 /* Main.storyboard */,
 				C299AE87208AB09F00BE0494 /* Assets.xcassets */,
 				C299AE89208AB09F00BE0494 /* LaunchScreen.storyboard */,
 				C299AE8C208AB09F00BE0494 /* Info.plist */,
+				C299AE94208D3B1700BE0494 /* Movie.swift */,
 			);
 			path = Moviz;
 			sourceTree = "<group>";
@@ -137,6 +143,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C299AE83208AB09F00BE0494 /* ViewController.swift in Sources */,
+				C299AE93208AB21F00BE0494 /* MovizTableViewController.swift in Sources */,
+				C299AE95208D3B1700BE0494 /* Movie.swift in Sources */,
 				C299AE81208AB09F00BE0494 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
