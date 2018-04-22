@@ -49,6 +49,9 @@ class MovizTableViewController: UITableViewController {
         let movie = movies[indexPath.row]
         cell.textLabel!.text = movie.titre
         cell.detailTextLabel!.text = movie.dateStr
+        telechargerImage(posterStr: movie.posterStr) { (data) in
+            cell.imageView!.image = UIImage(data : data)
+        }
         
         return cell
     }
@@ -82,16 +85,47 @@ extension MovizTableViewController {
                 let titre = resultat["title"] as! String
                 let synopsis = resultat["overview"] as! String
                 let dateSortie = resultat["release_date"] as! String
-                let posterStr = resultat["poster_path"] as! String
+                let posterStr = "https://image.tmdb.org/t/p/w342\(resultat["poster_path"] as! String)"
                 
                 let movie = Movie(id: id, titre: titre, synopsis: synopsis, poster: posterStr, date: dateSortie)
                 moviz.append(movie)
+                
+                print(posterStr)
                 
                 }
             
             completion(moviz)
         
             }
+    }
+    
+    func telechargerImage(posterStr:String, completion:@escaping (_ imageData:Data)->()) {
+        //convertir string a URL
+        let url = URL(string:posterStr)
+        //requete
+        let requete = URLRequest(url: url!)
+        //session
+        let session = URLSession(
+            configuration: URLSessionConfiguration.default,
+            delegate: nil,
+            delegateQueue: OperationQueue.main)
+        
+        let task:URLSessionDataTask = session.dataTask(with: requete, completionHandler: { (data, response, error) in
+            
+            if error == nil {
+                
+                if let dataOk = data {
+                    DispatchQueue.main.async {
+                        completion(dataOk)
+                    }
+                        }
+                        
+                    }
+        
+        }) //task
+
+        task.resume()
+        
     }
     
     func telecharger(completion:@escaping (_ dictionnaires:[Dictionary<String, Any>])->()) {
