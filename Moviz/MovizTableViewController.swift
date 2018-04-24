@@ -15,7 +15,8 @@ class MovizTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //telecharger()
-        telechargerMovies { (movies) in
+        let urlMoviz = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"
+        telechargerMovies(url: urlMoviz) { (movies) in
             self.movies = movies
             self.tableView.reloadData()
         }
@@ -74,10 +75,10 @@ class MovizTableViewController: UITableViewController {
 
 extension MovizTableViewController {
     
-    func telechargerMovies(completion: @escaping (_ liste:[Movie])->()) {
+    func telechargerMovies(url: String, completion: @escaping (_ liste:[Movie])->()) {
         
         var moviz:[Movie] = []
-        telecharger { (resultats) in
+        telecharger(url) { (resultats) in
             for resultat in resultats {
                 print("- \(resultat["title"] as! String)")
             
@@ -100,38 +101,33 @@ extension MovizTableViewController {
     }
     
     func telechargerImage(posterStr:String, completion:@escaping (_ imageData:Data)->()) {
-        //convertir string a URL
-        let url = URL(string:posterStr)
-        //requete
-        let requete = URLRequest(url: url!)
-        //session
-        let session = URLSession(
-            configuration: URLSessionConfiguration.default,
-            delegate: nil,
-            delegateQueue: OperationQueue.main)
         
-        let task:URLSessionDataTask = session.dataTask(with: requete, completionHandler: { (data, response, error) in
-            
-            if error == nil {
-                
-                if let dataOk = data {
-                    DispatchQueue.main.async {
-                        completion(dataOk)
-                    }
-                        }
-                        
-                    }
-        
-        }) //task
-
-        task.resume()
+        requeteDonnees(stringUrl: posterStr) { (data, response) in
+            DispatchQueue.main.async {
+                completion(data)
+            }
+        }
         
     }
     
-    func telecharger(completion:@escaping (_ dictionnaires:[Dictionary<String, Any>])->()) {
-        //convertir string a URL
-        let string = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = URL(string:string)
+    func telecharger(_ url:String, completion:@escaping (_ dictionnaires:[Dictionary<String, Any>])->()) {
+        requeteDonnees(stringUrl: url) { (data, response) in
+            
+            if let jsonDictionnaire = try! JSONSerialization.jsonObject(with: data, options: []) as? Dictionary<String, Any> {
+                
+                let resultats = jsonDictionnaire["results"] as? [Dictionary<String, Any>]
+                
+                DispatchQueue.main.async {
+                    completion(resultats!)
+                }
+                
+            } //if
+        }
+    }
+    
+    func requeteDonnees(stringUrl:String, completion:@escaping (_ data:Data,_ response:URLResponse)->()) {
+        
+        let url = URL(string:stringUrl)
         
         //requete
         let requete = URLRequest(url: url!)
@@ -147,20 +143,16 @@ extension MovizTableViewController {
                 
                 if let dataOk = data {
                     
-                    if let jsonDictionnaire = try! JSONSerialization.jsonObject(with: dataOk, options: []) as? Dictionary<String, Any> {
-                        
-                        let resultats = jsonDictionnaire["results"] as? [Dictionary<String, Any>]
-                        
-                        DispatchQueue.main.async {
-                            completion(resultats!)
+                    completion(dataOk, response!)
+                 
                         }
                         
-                        }
-                    }
+            } else {
+                    print(error!.localizedDescription)
+                    print("erreur requête des données")
             }
         }) //task
         
-        //Important pour executer la tache + requete
         task.resume()
     }
 }
