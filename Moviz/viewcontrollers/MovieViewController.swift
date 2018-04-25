@@ -8,11 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MovieViewController: UIViewController {
 
+    @IBOutlet weak var movieWebView: UIWebView!
+    var movieSelectionne:Movie?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        print(movieSelectionne!.titre)
     }
 
     override func didReceiveMemoryWarning() {

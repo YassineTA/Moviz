@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B4FC4BC02090BDC200E99894 /* MovizTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FC4BBF2090BDC200E99894 /* MovizTableViewCell.swift */; };
+		C27F33892091354400FC61AB /* MovizTableViewController+telechargement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27F33882091354400FC61AB /* MovizTableViewController+telechargement.swift */; };
 		C299AE81208AB09F00BE0494 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C299AE80208AB09F00BE0494 /* AppDelegate.swift */; };
-		C299AE83208AB09F00BE0494 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C299AE82208AB09F00BE0494 /* ViewController.swift */; };
+		C299AE83208AB09F00BE0494 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C299AE82208AB09F00BE0494 /* MovieViewController.swift */; };
 		C299AE86208AB09F00BE0494 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C299AE84208AB09F00BE0494 /* Main.storyboard */; };
 		C299AE88208AB09F00BE0494 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C299AE87208AB09F00BE0494 /* Assets.xcassets */; };
 		C299AE8B208AB09F00BE0494 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C299AE89208AB09F00BE0494 /* LaunchScreen.storyboard */; };
@@ -19,9 +20,10 @@
 
 /* Begin PBXFileReference section */
 		B4FC4BBF2090BDC200E99894 /* MovizTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovizTableViewCell.swift; sourceTree = "<group>"; };
+		C27F33882091354400FC61AB /* MovizTableViewController+telechargement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovizTableViewController+telechargement.swift"; sourceTree = "<group>"; };
 		C299AE7D208AB09F00BE0494 /* Moviz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moviz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C299AE80208AB09F00BE0494 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C299AE82208AB09F00BE0494 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C299AE82208AB09F00BE0494 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		C299AE85208AB09F00BE0494 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C299AE87208AB09F00BE0494 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C299AE8A208AB09F00BE0494 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -41,6 +43,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C27F33852091317400FC61AB /* viewcontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				C27F33882091354400FC61AB /* MovizTableViewController+telechargement.swift */,
+				C299AE82208AB09F00BE0494 /* MovieViewController.swift */,
+				C299AE92208AB21F00BE0494 /* MovizTableViewController.swift */,
+			);
+			path = viewcontrollers;
+			sourceTree = "<group>";
+		};
+		C27F33862091319600FC61AB /* views */ = {
+			isa = PBXGroup;
+			children = (
+				B4FC4BBF2090BDC200E99894 /* MovizTableViewCell.swift */,
+				C299AE84208AB09F00BE0494 /* Main.storyboard */,
+				C299AE87208AB09F00BE0494 /* Assets.xcassets */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		C27F3387209131D900FC61AB /* models */ = {
+			isa = PBXGroup;
+			children = (
+				C299AE94208D3B1700BE0494 /* Movie.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
 		C299AE74208AB09F00BE0494 = {
 			isa = PBXGroup;
 			children = (
@@ -60,15 +90,12 @@
 		C299AE7F208AB09F00BE0494 /* Moviz */ = {
 			isa = PBXGroup;
 			children = (
+				C27F3387209131D900FC61AB /* models */,
+				C27F33862091319600FC61AB /* views */,
+				C27F33852091317400FC61AB /* viewcontrollers */,
 				C299AE80208AB09F00BE0494 /* AppDelegate.swift */,
-				C299AE82208AB09F00BE0494 /* ViewController.swift */,
-				C299AE92208AB21F00BE0494 /* MovizTableViewController.swift */,
-				B4FC4BBF2090BDC200E99894 /* MovizTableViewCell.swift */,
-				C299AE84208AB09F00BE0494 /* Main.storyboard */,
-				C299AE87208AB09F00BE0494 /* Assets.xcassets */,
 				C299AE89208AB09F00BE0494 /* LaunchScreen.storyboard */,
 				C299AE8C208AB09F00BE0494 /* Info.plist */,
-				C299AE94208D3B1700BE0494 /* Movie.swift */,
 			);
 			path = Moviz;
 			sourceTree = "<group>";
@@ -145,7 +172,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C299AE83208AB09F00BE0494 /* ViewController.swift in Sources */,
+				C299AE83208AB09F00BE0494 /* MovieViewController.swift in Sources */,
+				C27F33892091354400FC61AB /* MovizTableViewController+telechargement.swift in Sources */,
 				C299AE93208AB21F00BE0494 /* MovizTableViewController.swift in Sources */,
 				B4FC4BC02090BDC200E99894 /* MovizTableViewCell.swift in Sources */,
 				C299AE95208D3B1700BE0494 /* Movie.swift in Sources */,
