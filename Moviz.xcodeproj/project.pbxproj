@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B4FC4BC02090BDC200E99894 /* MovizTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FC4BBF2090BDC200E99894 /* MovizTableViewCell.swift */; };
 		C299AE81208AB09F00BE0494 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C299AE80208AB09F00BE0494 /* AppDelegate.swift */; };
 		C299AE83208AB09F00BE0494 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C299AE82208AB09F00BE0494 /* ViewController.swift */; };
 		C299AE86208AB09F00BE0494 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C299AE84208AB09F00BE0494 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B4FC4BBF2090BDC200E99894 /* MovizTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovizTableViewCell.swift; sourceTree = "<group>"; };
 		C299AE7D208AB09F00BE0494 /* Moviz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moviz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C299AE80208AB09F00BE0494 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C299AE82208AB09F00BE0494 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				C299AE80208AB09F00BE0494 /* AppDelegate.swift */,
 				C299AE82208AB09F00BE0494 /* ViewController.swift */,
 				C299AE92208AB21F00BE0494 /* MovizTableViewController.swift */,
+				B4FC4BBF2090BDC200E99894 /* MovizTableViewCell.swift */,
 				C299AE84208AB09F00BE0494 /* Main.storyboard */,
 				C299AE87208AB09F00BE0494 /* Assets.xcassets */,
 				C299AE89208AB09F00BE0494 /* LaunchScreen.storyboard */,
@@ -102,7 +105,7 @@
 				TargetAttributes = {
 					C299AE7C208AB09F00BE0494 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -144,6 +147,7 @@
 			files = (
 				C299AE83208AB09F00BE0494 /* ViewController.swift in Sources */,
 				C299AE93208AB21F00BE0494 /* MovizTableViewController.swift in Sources */,
+				B4FC4BC02090BDC200E99894 /* MovizTableViewCell.swift in Sources */,
 				C299AE95208D3B1700BE0494 /* Movie.swift in Sources */,
 				C299AE81208AB09F00BE0494 /* AppDelegate.swift in Sources */,
 			);
@@ -282,12 +286,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2B7N5HZC29;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Moviz/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tarraf.NoteBook.Moviz;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MBP.NoteBook.Moviz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -297,12 +303,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2B7N5HZC29;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Moviz/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tarraf.NoteBook.Moviz;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MBP.NoteBook.Moviz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

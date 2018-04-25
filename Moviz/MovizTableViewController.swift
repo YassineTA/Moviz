@@ -43,15 +43,17 @@ class MovizTableViewController: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! MovizTableViewCell
 
         // Configure the cell...
         
         let movie = movies[indexPath.row]
-        cell.textLabel!.text = movie.titre
-        cell.detailTextLabel!.text = movie.dateStr
+        cell.movieTitreLabel.text = movie.titre
+        cell.movieDateLabel.text = movie.dateStr
+        cell.movieSynopsisLabel.text = movie.synopsis.tronquerString()
+        
         telechargerImage(posterStr: movie.posterStr) { (data) in
-            cell.imageView!.image = UIImage(data : data)
+            cell.movieImageView.image = UIImage(data:data)
         }
         
         return cell
@@ -71,6 +73,18 @@ class MovizTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension String {
+    func tronquerString() -> String {
+        if self.characters.count > 100 {
+            let charCount = self.characters.count
+            return "\(String(self.dropLast(charCount - 100))) ..."
+    }else {
+            return self
+        }
+        
+    }//func
 }
 
 extension MovizTableViewController {
