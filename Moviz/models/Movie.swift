@@ -15,6 +15,7 @@ class Movie {
     let synopsis:String
     let posterStr:String
     let dateStr:String?
+    var imdbID:String = ""
     
     init(id:Int, titre:String, synopsis:String, poster:String, date:String) {
         self.id = id

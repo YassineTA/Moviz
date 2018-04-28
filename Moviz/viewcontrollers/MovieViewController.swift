@@ -16,9 +16,24 @@ class MovieViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        print(movieSelectionne!.titre)
+        afficherDetailsMovie()
+        updateUI()
+ 
     }
-
+    func updateUI(){
+        UIApplication.shared.statusBarStyle = .lightContent
+        self.navigationController?.navigationBar.tintColor = .yellow
+    }
+    
+    func afficherDetailsMovie(){
+        let imdbUrl = "http://www.imdb.com/title/\(movieSelectionne!.imdbID)/"
+        self.title =  movieSelectionne!.titre
+        let url = URL(string: imdbUrl)
+        let request = URLRequest(url: url!)
+        print(url!)
+        movieWebView.loadRequest(request)
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

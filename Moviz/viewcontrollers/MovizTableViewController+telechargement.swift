@@ -14,7 +14,7 @@ extension MovizTableViewController {
     func telechargerMovies(url: String, completion: @escaping (_ liste:[Movie])->()) {
         
         var moviz:[Movie] = []
-        telecharger(url) { (resultats) in
+        telecharger(url) { (resultats, resultat) in
             for resultat in resultats {
                 //print("- \(resultat["title"] as! String)")
                 
@@ -24,14 +24,24 @@ extension MovizTableViewController {
                 let dateSortie = resultat["release_date"] as! String
                 let posterStr = "https://image.tmdb.org/t/p/w342\(resultat["poster_path"] as! String)"
                 
-                let movie = Movie(id: id, titre: titre, synopsis: synopsis, poster: posterStr, date: dateSortie)
-                moviz.append(movie)
+                let movieUrl = "https://api.themoviedb.org/3/movie/\(id)?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"
                 
+                var imdbStr:String?
+                
+                self.telechargerDetailsMovie(movieDetailsUrlString: movieUrl, completion: { (imdbString) in
+                    imdbStr = imdbString
+                    let movie = Movie(id: id, titre: titre, synopsis: synopsis, poster: posterStr, date: dateSortie)
+                    moviz.append(movie)
+                    movie.imdbID = imdbStr!
+                    //print(movie.imdbID)
+                     completion(moviz)
+                })
+
                 //print(posterStr)
                 
             }
             
-            completion(moviz)
+           
             
         }
     }
@@ -46,15 +56,38 @@ extension MovizTableViewController {
         
     }
     
-    func telecharger(_ url:String, completion:@escaping (_ dictionnaires:[Dictionary<String, Any>])->()) {
+    func telechargerDetailsMovie(movieDetailsUrlString:String, completion:@escaping (_ str:String)->()){
+        
+        var imdb:String?
+        
+        telecharger(movieDetailsUrlString) { (reultats, resultat) in
+            print(resultat["imdb_id"] as! String)
+            imdb = resultat["imdb_id"] as? String
+            DispatchQueue.main.async {
+                completion(imdb!)
+            }
+        }
+
+    }
+    
+    func telecharger(_ url:String, completion:@escaping (_ dictionnaires:[Dictionary<String, Any>], _ dictonnaire:Dictionary<String, Any> )->()) {
+        
+        var results:[Dictionary<String, Any>] = []
+        var result:Dictionary<String, Any> = [:]
+        
         requeteDonnees(stringUrl: url) { (data, response) in
             
             if let jsonDictionnaire = try! JSONSerialization.jsonObject(with: data, options: []) as? Dictionary<String, Any> {
                 
-                let resultats = jsonDictionnaire["results"] as? [Dictionary<String, Any>]
+                if  let resultats = jsonDictionnaire["results"] as? [Dictionary<String, Any>]{
+                    results = resultats
+                }
+                if let resultat = jsonDictionnaire as? Dictionary<String, Any> {
+                    result = resultat
+                }
                 
                 DispatchQueue.main.async {
-                    completion(resultats!)
+                    completion(results,result)
                 }
                 
             } //if
